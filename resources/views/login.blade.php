@@ -27,12 +27,12 @@
             @csrf
             <div class="form-group">
               <label for="email">Email</label>
-              <input id="email" type="text" name="email" placeholder="Your Email" required>
+              <input required id="email" type="text" name="email" placeholder="Your Email" required>
             </div>
 
             <div class="form-group">
               <label for="password">Password</label>
-              <input id="password" type="password" name="password" value="" placeholder="Insert Password Here">
+              <input required id="password" type="password" name="password" placeholder="Insert Password Here">
             </div>
 
             <div class="form-group">

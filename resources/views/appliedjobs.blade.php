@@ -39,7 +39,7 @@
                     <tbody>
                       @if ($job->isempty())
                         <tr>
-                          <td colspan="5" class="text-center">No Job Listed</td>
+                          <td colspan="5" class="text-center">No Application Listed</td>
                         </tr>
                       @else
                         @foreach ($job as $item)
@@ -59,12 +59,6 @@
                                     <a href="{{ route('applicationdetail', $item->id) }}">
                                       <button data-text="View My Application"><span class="la la-eye"></span></button>
                                     </a>
-                                  </li>
-                                  <li>
-                                    <a href="{{ route('jobpost.edit', $item->job->id) }}"><button
-                                        data-text="Edit Job"><span class="la la-pencil"></span></button></a>
-                                  </li>
-                                  <li><button data-text="Delete Aplication"><span class="la la-trash"></span></button>
                                   </li>
                                 </ul>
                               </div>

@@ -41,7 +41,7 @@ class DatabaseSeeder extends Seeder
         //     'user_id' => 2,
         //     'name' => 'company',
         //     'email' => 'company@gmail.com',
-        //     'phonenumber' => '082143022175',
+        //     'phone' => '082143022175',
         //     'website' => 'www.game3rb.com',
         //     'about' => 'Ini Company',
         //     'country' => 'INDONESIA',

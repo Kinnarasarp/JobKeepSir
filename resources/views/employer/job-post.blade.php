@@ -6,6 +6,15 @@
     <!-- Dashboard -->
     <section class="user-dashboard">
       <div class="dashboard-outer">
+        @if (count($errors) > 0)
+          <div class="message-box error">
+            <ul class="m-0">
+              @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+              @endforeach
+            </ul>
+          </div>
+        @endif
         <div class="row">
           <div class="col-lg-12">
             <!-- Ls widget -->
@@ -96,7 +105,7 @@
 
                       <!-- Input -->
                       <div class="form-group col-lg-12 col-md-12 text-right">
-                        <button class="theme-btn btn-style-one">Next</button>
+                        <button class="theme-btn btn-style-one">Save</button>
                       </div>
                     </div>
                   </form>

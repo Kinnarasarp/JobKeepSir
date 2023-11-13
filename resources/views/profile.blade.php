@@ -10,6 +10,15 @@
           <button class="close-btn"><span class="close_icon"></span></button>
         </div>
       @endif
+      @if (count($errors) > 0)
+        <div class="message-box error">
+          <ul class="m-0">
+            @foreach ($errors->all() as $error)
+              <li>{{ $error }}</li>
+            @endforeach
+          </ul>
+        </div>
+      @endif
       <div class="row">
         <div class="col-lg-12">
           <form class="default-form" action="{{ route('profile.add') }}" method="post">
@@ -41,13 +50,13 @@
                     <div class="form-group col-lg-6 col-md-12">
                       <label>Phone</label>
                       <input required type="text" name="phone" value="{{ $candidate->phone }}"
-                        placeholder="Example = 082143021xxxxx">
+                        placeholder="Example : 082143021xxxxx">
                     </div>
 
                     <!-- Input -->
                     <div class="form-group col-lg-6 col-md-12">
                       <label>Email address</label>
-                      <input required type="text" name="email" value="{{ $candidate->email }}"
+                      <input disabled required type="text" name="email" value="{{ $candidate->email }}"
                         placeholder="www.instagram.com/example/">
                     </div>
 
@@ -70,6 +79,12 @@
                       <label>Age</label>
                       <input required type="number" name="age" value="{{ $candidate->age }}"
                         placeholder="Example : 24">
+                    </div>
+                    <!-- About Company -->
+                    <div class="form-group col-lg-12 col-md-12">
+                      <label>Description</label>
+                      <textarea required name="description"
+                        placeholder="Spent several years working on sheep on Wall Street. Had moderate success investing in Yugo's on Wall Street. Managed a small team buying and selling Pogo sticks for farmers. Spent several years licensing licorice in West Palm Beach, FL. Developed several new methods for working it banjos in the aftermarket. Spent a weekend importing banjos in West Palm Beach, FL.In this position, the Software Engineer collaborates with Evention's Development team to continuously enhance our current software solutions as well as create new solutions to eliminate the back-office operations and management challenges present">{!! $candidate->description !!} </textarea>
                     </div>
                   </div>
                 </div>
@@ -129,8 +144,8 @@
                     <!-- Input -->
                     <div class="form-group col-lg-12 col-md-12">
                       <label>Country</label>
-                      <select class="chosen-select" style="display: none;">
-                        <option selected>Indonesia</option>
+                      <select name="country" class="chosen-select" style="display: none;">
+                        <option selected value="INDONESIA">INDONESIA</option>
                       </select>
                     </div>
                     @if ($candidate->province_id != null)

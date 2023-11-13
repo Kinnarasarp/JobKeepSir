@@ -2,12 +2,12 @@
 @section('page_title', 'Job Detail')
 @section('content')
   <style>
-    #mm-0>section>div.job-detail-outer>div>div>div.content-column.col-lg-8.col-md-12.col-sm-12>div.job-detail>ul {
+    .job-detail ul {
       position: relative;
       margin-bottom: 50px;
     }
 
-    #mm-0>section>div.job-detail-outer>div>div>div.content-column.col-lg-8.col-md-12.col-sm-12>div.job-detail>ul>li {
+    .job-detail ul li {
       list-style-type: disc;
       list-style-position: inside;
     }
@@ -49,7 +49,6 @@
             </div>
 
             <div class="btn-box">
-
               @if (Auth::user()->role == 'employer')
                 @if ($company->id == $job->company_id)
                   <a href="{{ route('jobpost.edit', $job->id) }}" class="theme-btn btn-style-one">Manage Job</a>
@@ -64,17 +63,6 @@
                 @else
                   <a href="{{ route('jobapply', $job->id) }}" class="theme-btn btn-style-one">Apply For Job</a>
                 @endif
-                {{-- @dd($application)
-                @if ($application == null)
-                  <a href="{{ route('jobapply', $job->id) }}" class="theme-btn btn-style-one">Apply For Job</a>
-                @elseif (isset($application->job_id))
-                  <a href="{{ route('applicationdetail', $job->id) }}" class="theme-btn btn-style-one">See My Application
-                    For This
-                    Job</a>
-                @else
-                  ads
-                  <a href="{{ route('jobapply', $job->id) }}" class="theme-btn btn-style-one">Apply For Job</a>
-                @endif --}}
               @endif
             </div>
           </div>
@@ -102,7 +90,7 @@
                   </div>
 
                   <ul class="company-info">
-                    <li>Phone: <span>{{ $job->company->phonenumber }}</span></li>
+                    <li>Phone: <span>{{ $job->company->phone }}</span></li>
                     <li>Email: <span>{{ $job->company->email }}</span></li>
                     <li>Location: <span>{{ $job->company->regency->name }}, {{ $job->company->province->name }},
                         {{ $job->company->country }}</span>

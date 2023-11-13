@@ -45,7 +45,7 @@ class AdminController extends Controller
     public function verify()
     {
         $company = Company::where('status', 'unverified')->get();
-        return view('admin.verify', compact('company'));
+        return view('admin.verify', compact('company'))->with('success', 'data updated');
     }
 
     public function verifystore($id, Request $request)

@@ -22,6 +22,19 @@ class ProfileController extends Controller
     public function store(Request $request)
     {
         $candidate = Candidate::where('user_id', auth()->user()->id)->first();
+
+        $this->validate($request, [
+            'name' => 'required|min:3',
+            'job_title' => 'required|min:3',
+            'phone' => 'required|numeric',
+            'email' => 'required|email',
+            'language' => 'required',
+            'experience' => 'required',
+            'age' => 'required|numeric',
+            'description' => 'required|min:15',
+            'address' => 'required|min:3'
+        ]);
+
         if ($candidate->count() < 1) {
             $candidate = new Candidate();
         }
@@ -57,12 +70,22 @@ class ProfileController extends Controller
     public function storecompany(Request $request)
     {
         $comp = Company::where('user_id', auth()->user()->id)->first();
+
+        $this->validate($request, [
+            'name' => 'required|min:3',
+            'email' => 'required|email',
+            'phone' => 'required|numeric',
+            'website' => 'required',
+            'about' => 'required|min:10',
+            'address' => 'required|min:3'
+        ]);
+
         if ($comp->count() < 1) {
             $comp = new Company();
         }
         $comp->name = $request->name;
         $comp->email = $request->email;
-        $comp->phonenumber = $request->phonenumber;
+        $comp->phone = $request->phone;
         $comp->website = $request->website;
         $comp->about = $request->about;
         $comp->country = $request->country;

@@ -3,9 +3,19 @@
   <div class="container">
     <section class="user-dashboard">
       <div class="dashboard-outer">
+        @if (count($errors) > 0)
+          <div class="message-box error">
+            <ul class="m-0">
+              @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+              @endforeach
+            </ul>
+          </div>
+        @endif
         <div class="row">
           <div class="col-lg-12">
-            <form class="default-form" action="{{ route('submitapplication') }}" method="post" enctype="multipart/form-data">
+            <form class="default-form" action="{{ route('submitapplication') }}" method="post"
+              enctype="multipart/form-data">
               @csrf
               <!-- Ls widget -->
               <div class="ls-widget">
@@ -42,7 +52,7 @@
                       <div class="form-group col-lg-6 col-md-12">
                         <label>Phone</label>
                         <input required type="text" name="phone" value="{{ $candidate->phone }}"
-                          placeholder="Example = 082143021xxxxx">
+                          placeholder="Example : 082143021xxxxx">
                       </div>
 
                       <!-- Input -->
@@ -95,27 +105,26 @@
                       <!-- Input -->
                       <div class="form-group col-lg-6 col-md-12">
                         <label>Facebook</label>
-                        <input required type="text" name="facebook" value="{{ $candidate->facebook }}"
+                        <input type="text" name="facebook" value="{{ $candidate->facebook }}"
                           placeholder="www.facebook.com/Invision">
                       </div>
 
                       <!-- Input -->
                       <div class="form-group col-lg-6 col-md-12">
                         <label>Twitter</label>
-                        <input required type="text" name="twitter" value="{{ $candidate->twitter }}" placeholder="">
+                        <input type="text" name="twitter" value="{{ $candidate->twitter }}" placeholder="">
                       </div>
 
                       <!-- Input -->
                       <div class="form-group col-lg-6 col-md-12">
                         <label>Linkedin</label>
-                        <input required type="text" name="linkedin" value="{{ $candidate->linkedin }}" placeholder="">
+                        <input type="text" name="linkedin" value="{{ $candidate->linkedin }}" placeholder="">
                       </div>
 
                       <!-- Input -->
                       <div class="form-group col-lg-6 col-md-12">
                         <label>Instagram</label>
-                        <input required type="text" name="instagram" value="{{ $candidate->instagram }}"
-                          placeholder="">
+                        <input type="text" name="instagram" value="{{ $candidate->instagram }}" placeholder="">
                       </div>
                     </div>
                   </div>

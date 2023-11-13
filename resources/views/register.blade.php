@@ -13,6 +13,11 @@
       <div class="login-form default-form">
         <div class="form-inner">
           <h3>Create Account for Candidate | JobKeepSir</h3>
+          @if ($errors->any())
+            <div class="message-box error">
+              <p>Email Already Registered !</p>
+            </div>
+          @endif
           <form method="post" action="{{ route('prosesregister') }}">
             @csrf
             <div class="form-group">

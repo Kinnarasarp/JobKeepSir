@@ -168,7 +168,7 @@
                 Profile</a></li>
             <li class="@yield('application_active')"><a href="{{ route('application') }}"><i class="la la-file-invoice"></i>My
                 Application</a></li>
-            <li class=""><a href="{{ route('signout') }}"><i class="la la-sign-out"></i>Logout</a>
+            <li><a href="{{ route('signout') }}"><i class="la la-sign-out"></i>Logout</a>
             </li>
           </ul>
         </div>

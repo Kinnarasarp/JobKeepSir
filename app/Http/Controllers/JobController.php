@@ -23,6 +23,13 @@ class JobController extends Controller
 
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'title' => 'required|min:3',
+            'description' => 'required|min:15',
+            'salary' => 'required|numeric',
+            'address' => 'required'
+        ]);
+
         $job = new Job();
         $job->title = $request->title;
         $job->description = $request->description;
@@ -54,6 +61,12 @@ class JobController extends Controller
     public function update($id, Request $request)
     {
         $job = Job::find($id);
+        $this->validate($request, [
+            'title' => 'required|min:3',
+            'description' => 'required|min:15',
+            'salary' => 'required|numeric',
+            'address' => 'required'
+        ]);
         $job->title = $request->title;
         $job->description = $request->description;
         $job->type = $request->type;
@@ -82,7 +95,13 @@ class JobController extends Controller
     {
         $job = Job::find($id);
         // $application = JobApply::find($id);
-        $application = JobApply::where('job_id', $id)->first();
+        $app = JobApply::where('job_id', $id)->get();
+        $application = [];
+        foreach ($app as $key => $value) {
+            $application = $value->where('user_id', auth()->user()->id)->first();
+        }
+
+        // dd($application);
         if (isset(Auth::user()->company)) {
             $company = Company::find(Auth::user()->company->id);
             return view('job-detail', compact('job', 'application', 'company', 'id'));
@@ -103,25 +122,17 @@ class JobController extends Controller
     public function submitapplication(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required',
-            'job_title' => 'required',
-            'phone' => 'required',
-            'email' => 'required',
+            'name' => 'required|min:3|regex:/^[\pL\s\-]+$/u',
+            'job_title' => 'required|min:3',
+            'phone' => 'required|numeric',
+            'email' => 'required|email',
             'language' => 'required',
             'experience' => 'required',
-            'age' => 'required',
-            'description' => 'required',
-            'facebook' => 'required',
-            'twitter' => 'required',
-            'linkedin' => 'required',
-            'instagram' => 'required',
-            'country' => 'required',
-            'province_id' => 'required',
-            'regency_id' => 'required',
-            'address' => 'required',
+            'age' => 'required|numeric',
+            'description' => 'required|min:15',
+            'address' => 'required|min:3',
             'cv' => 'required|mimes:png,jpg,jpeg'
         ]);
-        // dd($request);
 
         $file = $request->file('cv');
         $fileName = time() . '-' . $file->getClientOriginalName();

@@ -9,6 +9,14 @@
           <p>Success: Data Updated!</p>
           <button class="close-btn"><span class="close_icon"></span></button>
         </div>
+      @elseif (count($errors) > 0)
+        <div class="message-box error">
+          <ul class="m-0">
+            @foreach ($errors->all() as $error)
+              <li>{{ $error }}</li>
+            @endforeach
+          </ul>
+        </div>
       @endif
       <div class="row">
         <form class="default-form" action="{{ route('companyprofile.add') }}" method="POST">
@@ -39,8 +47,8 @@
                     <!-- Input -->
                     <div class="form-group col-lg-6 col-md-12">
                       <label>Phone</label>
-                      <input type="number" id="phonenumber" value="{{ $company->phonenumber }}" name="phonenumber"
-                        placeholder="Insert Here">
+                      <input type="number" id="phone" value="{{ $company->phone }}" name="phone"
+                        placeholder="Example : 082143021xxxxx">
                     </div>
 
                     <!-- Input -->

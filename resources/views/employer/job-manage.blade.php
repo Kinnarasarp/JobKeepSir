@@ -68,8 +68,6 @@
                                     <a href="{{ route('jobpost.edit', $item->id) }}"><button data-text="Edit Job"><span
                                           class="la la-pencil"></span></button></a>
                                   </li>
-                                  <li><button data-text="Delete Aplication"><span class="la la-trash"></span></button>
-                                  </li>
                                 </ul>
                               </div>
                             </td>

@@ -36,7 +36,7 @@
                     <div class="form-group col-lg-6 col-md-12">
                       <label>Phone</label>
                       <input disabled type="text" name="phone" value="{{ $application->phone }}"
-                        placeholder="Example = 082143021xxxxx">
+                        placeholder="Example : 082143021xxxxx">
                     </div>
 
                     <!-- Input -->

@@ -7,6 +7,12 @@
       text-align: center;
     }
   </style>
+  @if (Session::has('success'))
+    <div class="message-box success">
+      <p>Success: Company Verified!</p>
+      <button class="close-btn"><span class="close_icon"></span></button>
+    </div>
+  @endif
   <div class="card">
     <h5 class="card-header">Company</h5>
     <div class="table-responsive text-nowrap">

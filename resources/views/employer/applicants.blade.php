@@ -57,15 +57,12 @@
                               <div class="option-box">
                                 <ul class="option-list">
                                   <li>
-                                    <a href="{{ route('applicant.details', ['id' => $job->id, 'applicant' => $item->id]) }}"><button
+                                    <a
+                                      href="{{ route('applicant.details', ['id' => $job->id, 'applicant' => $item->id]) }}"><button
                                         data-text="View Applicants"><span class="la la-eye"></span></button></a>
                                   </li>
-                                  <li>
-                                    <a href="{{ route('jobpost.edit', $item->id) }}"><button data-text="Edit Job"><span
-                                          class="la la-pencil"></span></button></a>
-                                  </li>
-                                  <li><button data-text="Delete Aplication"><span class="la la-trash"></span></button>
-                                  </li>
+                                  {{-- <li><button data-text="Delete Aplication"><span class="la la-trash"></span></button>
+                                  </li> --}}
                                 </ul>
                               </div>
                             </td>
